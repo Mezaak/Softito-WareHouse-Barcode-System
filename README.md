@@ -12,10 +12,6 @@
 
 This project is warehouse management system with barcode "scanning features(!)"
 
-- If a face mask is worn or not.
-
-- Whether the mask is worn properly or improperly.
-
 ## Built With
 
 C#,ASP.NET MVC,TailwindCSS
