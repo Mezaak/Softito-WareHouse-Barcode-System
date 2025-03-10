@@ -1,0 +1,73 @@
+﻿@using Entity.Concreate
+@model Product
+
+@{
+    ViewBag.Title = "Ürün Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-950 text-white p-6">
+    <div class="max-w-lg w-full bg-gray-900 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-center mb-6">Yeni Ürün Eklemek</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="bg-red-600 text-white p-3 rounded-md mb-4 text-center">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+        {
+            <div class="bg-green-600 text-white p-3 rounded-md mb-4 text-center">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+        <form method="post" action="@Url.Action("Productadd", "Product")">
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Ürün Adı</label>
+                <input type="text" name="ProductName" required
+                       class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Kategori</label>
+                @if (ViewBag.Category != null)
+                {
+                    @Html.DropDownList("CategoryId", (List<SelectListItem>)ViewBag.Category, "Kategori Seç", new { @class = "w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500" })
+                }
+                else
+                {
+                    <select class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg">
+                        <option>Kategori bulunamadı</option>
+                    </select>
+                }
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Stok Miktarı</label>
+                <input type="number" name="Quantity" required
+                       class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Fiyat</label>
+                <input type="number" step="0.01" name="Price" required
+                       class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Barkod</label>
+                <input type="text" name="Barcode" required
+                       class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300 text-white font-bold py-3 rounded-lg shadow-md">
+                Ürünü Ekle
+            </button>
+        </form>
+    </div>
+</div>
+

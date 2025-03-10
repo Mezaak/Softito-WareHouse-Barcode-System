@@ -1,0 +1,40 @@
+﻿@model List<Entity.Concreate.Product>
+
+<div class="max-w-5xl mx-auto bg-gray-900 text-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold text-center mb-4">📌 Ürün Raporları</h2>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-700">
+            <thead>
+                <tr class="bg-gray-800 text-gray-200 font-semibold">
+                    <th class="p-4 text-left border border-gray-700">Ürün Adı</th>
+                    <th class="p-4 text-left border border-gray-700">Kategori</th>
+                    <th class="p-4 text-center border border-gray-700">Adet</th>
+                    <th class="p-4 text-center border border-gray-700">Fiyat</th>
+                    <th class="p-4 text-center border border-gray-700">Toplam Fiyat</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-700">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-gray-700 transition">
+                        <td class="p-4 border border-gray-700">@item.ProductName</td>
+                        <td class="p-4 border border-gray-700">@(item.Category != null ? item.Category.CategoryName : "Kategori Yok")</td>
+                        <td class="p-4 text-center border border-gray-700">@item.Quantity</td>
+                        <td class="p-4 text-center border border-gray-700">@item.Price.ToString("C")</td>
+                        <td class="p-4 text-center border border-gray-700">@((item.Quantity * item.Price).ToString("C"))</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="bg-gray-800 text-gray-200 font-semibold">
+                    <th class="p-4 text-left border border-gray-700">Toplamlar</th>
+                    <th class="p-4 border border-gray-700"></th>
+                    <th class="p-4 text-center border border-gray-700">@Model.Sum(p => p.Quantity)</th>
+                    <th class="p-4 border border-gray-700"></th>
+                    <th class="p-4 text-center border border-gray-700">@Model.Sum(p => p.Quantity * p.Price).ToString("C")</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@using Entity.Concreate
+@model List<Product>
+
+@{
+    ViewBag.Title = "Ürün Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="overflow-x-auto bg-gray-950 text-white p-6">
+    <h2 class="text-2xl font-semibold text-center mb-6">Ürün Listesi</h2>
+
+    <table class="min-w-full divide-y divide-gray-700">
+        <thead class="bg-gray-800 text-gray-200">
+            <tr>
+                <th class="px-4 py-3 text-left">Ürün Adı</th>
+                <th class="px-4 py-3 text-left">Kategori</th>
+                <th class="px-4 py-3 text-center">Stok</th>
+                <th class="px-4 py-3 text-center">Fiyat</th>
+                <th class="px-4 py-3 text-center">Barkod</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-700">
+            @foreach (var item in Model)
+            {
+                <tr class="hover:bg-gray-700 transition duration-300">
+                    <td class="px-4 py-3">@item.ProductName</td>
+                    <td class="px-4 py-3">@item.CategoryName</td>
+                    <td class="px-4 py-3 text-center">@item.Quantity</td>
+                    <td class="px-4 py-3 text-center">@item.Price ₺</td>
+                    <td class="px-4 py-3 text-center">@item.Barcode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depo Yönetimi</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-900">
+    <nav class="bg-gray-800 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <a href="/" class="text-white text-xl font-bold">Depo Yönetimi</a>
+                <button class="text-white md:hidden focus:outline-none" id="menu-toggle">
+                    ☰
+                </button>
+                <ul class="hidden md:flex space-x-6 text-white">
+                    <li><a href="/Product/BarcodeScanner" class="hover:text-gray-300">Barkod Okuma</a></li>
+                    <li><a href="/Product/ProductAdd" class="hover:text-gray-300">Ürün Ekle</a></li>
+                    <li><a href="/Product/CreateOrder" class="hover:text-gray-300">Sipariş Oluştur</a></li>
+                    <li><a href="/Product/Index" class="hover:text-gray-300">Ürün Listesi</a></li>
+                    <li><a href="/Product/Reports" class="hover:text-gray-300">Raporlar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-8 p-6 shadow-lg rounded-lg">
+        @RenderBody()
+    </div>
+    <footer class="w-full bg-gray-800 text-white py-4 shadow-md sticky bottom-0">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; @DateTime.Now.Year - Depo Yönetimi</p>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+            document.querySelector("nav ul").classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>

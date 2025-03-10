@@ -1,0 +1,40 @@
+﻿@using Entity.Concreate
+@{
+    ViewBag.Title = "Barkod Okuma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex items-center justify-center min-h-screen bg-gray-950 text-white p-4">
+    <div class="max-w-lg w-full bg-gray-900 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-center mb-4">Barkod Okuma</h2>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="bg-green-600 text-white p-3 rounded-md mb-4 text-center">
+                @ViewBag.Message
+            </div>
+        }
+
+        @if (ViewBag.NoProduct != null)
+        {
+            <div class="bg-red-600 text-white p-3 rounded-md mb-4 text-center">
+                Barkod bulunamadı! Önce ürünü ekleyin.
+            </div>
+        }
+        else
+        {
+            <form method="post">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2">Barkod Numarası</label>
+                    <input type="text" name="barcode" required
+                           class="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300 text-white font-bold py-3 rounded-lg shadow-md">
+                    Barkodu Tara
+                </button>
+            </form>
+        }
+    </div>
+</div>
