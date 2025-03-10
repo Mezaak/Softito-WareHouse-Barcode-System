@@ -17,4 +17,4 @@ This project is warehouse management system with barcode "scanning features(!)"
 C#,ASP.NET MVC,TailwindCSS
 
 ## Authors
-Boran Akkaya - https://github.com/mezaak 
+Boran Akkaya - https://github.com/Mezaak 
